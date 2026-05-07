@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
@@ -11,7 +11,7 @@ interface Profile {
   location: string
 }
 
-export default function SettingsPage() {
+function SettingsForm() {
   const [profile, setProfile] = useState<Profile>({
     username: '',
     display_name: '',
@@ -156,5 +156,17 @@ export default function SettingsPage() {
         </button>
       </form>
     </div>
+  )
+}
+
+export default function SettingsPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex justify-center p-16">
+        <div className="animate-spin h-8 w-8 border-4 border-orange-500 border-t-transparent rounded-full" />
+      </div>
+    }>
+      <SettingsForm />
+    </Suspense>
   )
 }
