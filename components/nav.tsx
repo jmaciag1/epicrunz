@@ -1,0 +1,65 @@
+'use client'
+
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import type { User } from '@supabase/supabase-js'
+import { createClient } from '@/lib/supabase/client'
+
+export default function Nav() {
+  const [user, setUser] = useState<User | null>(null)
+  const router = useRouter()
+  const supabase = createClient()
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => setUser(user))
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_, session) => setUser(session?.user ?? null)
+    )
+    return () => subscription.unsubscribe()
+  }, [])
+
+  async function handleSignOut() {
+    await supabase.auth.signOut()
+    router.push('/')
+    router.refresh()
+  }
+
+  return (
+    <nav className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+      <Link href="/" className="text-2xl font-bold text-orange-500">
+        EpicRunz
+      </Link>
+      <div className="flex items-center gap-4">
+        <Link href="/races" className="text-gray-600 hover:text-orange-500 font-medium">
+          Find Races
+        </Link>
+        {user ? (
+          <>
+            <Link href="/settings" className="text-gray-600 hover:text-orange-500 font-medium">
+              My Profile
+            </Link>
+            <button
+              onClick={handleSignOut}
+              className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 font-medium"
+            >
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <>
+            <Link href="/login" className="text-gray-600 hover:text-orange-500 font-medium">
+              Log In
+            </Link>
+            <Link
+              href="/signup"
+              className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 font-medium"
+            >
+              Sign Up Free
+            </Link>
+          </>
+        )}
+      </div>
+    </nav>
+  )
+}
