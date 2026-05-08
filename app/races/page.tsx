@@ -23,12 +23,12 @@ async function RaceList({ distance }: { distance?: string }) {
     : races
 
   if (errorMessage) {
-    return <p className="text-red-500">{errorMessage}</p>
+    return <p className="text-red-400">{errorMessage}</p>
   }
 
   if (filtered.length === 0) {
     return (
-      <p className="text-gray-500">
+      <p className="text-gray-400">
         No races found{distance ? ` for "${distance}"` : ''}. Try a different filter.
       </p>
     )
@@ -52,8 +52,8 @@ export default async function RacesPage({
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">Find Races</h1>
-      <p className="text-gray-500 mb-6">
+      <h1 className="text-3xl font-bold text-white mb-2">Find Races</h1>
+      <p className="text-gray-400 mb-6">
         Discover upcoming 5Ks to ultramarathons
       </p>
       <Suspense fallback={null}>

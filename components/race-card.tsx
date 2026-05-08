@@ -11,9 +11,9 @@ export default function RaceCard({ race }: { race: Race }) {
     : 'Date TBA'
 
   return (
-    <div className="bg-white rounded-xl shadow-sm p-5 hover:shadow-md transition-shadow flex flex-col">
-      <h3 className="font-semibold text-gray-900 text-lg leading-tight">{race.name}</h3>
-      <p className="text-gray-500 text-sm mt-1">
+    <div className="bg-gray-900 border border-white/10 rounded-xl p-5 hover:border-orange-500/40 hover:bg-gray-800/80 transition-all flex flex-col group">
+      <h3 className="font-semibold text-white text-base leading-tight group-hover:text-orange-400 transition-colors">{race.name}</h3>
+      <p className="text-gray-400 text-sm mt-1">
         {race.city}, {race.state}
       </p>
       <p className="text-orange-500 text-sm font-medium mt-1">{date}</p>
@@ -22,7 +22,7 @@ export default function RaceCard({ race }: { race: Race }) {
           {race.distances.map(d => (
             <span
               key={d}
-              className="bg-orange-50 text-orange-700 text-xs px-2 py-1 rounded-full font-medium"
+              className="bg-orange-500/10 text-orange-400 text-xs px-2 py-1 rounded-full font-medium border border-orange-500/20"
             >
               {d}
             </span>
@@ -34,7 +34,7 @@ export default function RaceCard({ race }: { race: Race }) {
           href={race.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-orange-500 hover:underline font-medium"
+          className="text-sm text-orange-500 hover:text-orange-400 font-medium transition-colors"
         >
           View race & register →
         </a>

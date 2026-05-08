@@ -26,36 +26,36 @@ export default function Nav() {
   }
 
   return (
-    <nav className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
-      <Link href="/" className="text-2xl font-bold text-orange-500">
+    <nav className="bg-gray-950/95 backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between sticky top-0 z-50">
+      <Link href="/" className="text-2xl font-extrabold text-orange-500 tracking-tight">
         EpicRunz
       </Link>
       <div className="flex items-center gap-4">
-        <Link href="/races" className="text-gray-600 hover:text-orange-500 font-medium">
+        <Link href="/races" className="text-gray-400 hover:text-white font-medium transition-colors text-sm">
           Find Races
         </Link>
         {user ? (
           <>
-            <Link href="/settings" className="text-gray-600 hover:text-orange-500 font-medium">
+            <Link href="/settings" className="text-gray-400 hover:text-white font-medium transition-colors text-sm">
               My Profile
             </Link>
             <button
               onClick={handleSignOut}
-              className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 font-medium"
+              className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 font-medium transition-colors text-sm"
             >
               Sign Out
             </button>
           </>
         ) : (
           <>
-            <Link href="/login" className="text-gray-600 hover:text-orange-500 font-medium">
+            <Link href="/login" className="text-gray-400 hover:text-white font-medium transition-colors text-sm">
               Log In
             </Link>
             <Link
               href="/signup"
-              className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 font-medium"
+              className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 font-medium transition-colors text-sm"
             >
-              Sign Up Free
+              Join Free
             </Link>
           </>
         )}

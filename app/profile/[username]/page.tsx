@@ -24,25 +24,25 @@ export default async function ProfilePage({
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
-      <div className="bg-white rounded-2xl shadow-sm p-8">
+      <div className="bg-gray-900 border border-white/10 rounded-2xl p-8">
         <div className="flex items-center gap-6">
-          <div className="h-20 w-20 rounded-full bg-orange-100 flex items-center justify-center text-3xl font-bold text-orange-500 shrink-0">
+          <div className="h-20 w-20 rounded-full bg-orange-500/20 border-2 border-orange-500/40 flex items-center justify-center text-3xl font-bold text-orange-400 shrink-0">
             {initial}
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-2xl font-bold text-white">
               {profile.display_name || profile.username}
             </h1>
-            <p className="text-gray-400">@{profile.username}</p>
+            <p className="text-gray-500">@{profile.username}</p>
             {profile.location && (
-              <p className="text-gray-500 text-sm mt-1">{profile.location}</p>
+              <p className="text-gray-400 text-sm mt-1">{profile.location}</p>
             )}
           </div>
         </div>
         {profile.bio && (
-          <p className="mt-6 text-gray-700 leading-relaxed">{profile.bio}</p>
+          <p className="mt-6 text-gray-300 leading-relaxed">{profile.bio}</p>
         )}
-        <p className="mt-6 text-sm text-gray-400 border-t pt-4">
+        <p className="mt-6 text-sm text-gray-500 border-t border-white/10 pt-4">
           Member since {joinDate}
         </p>
       </div>

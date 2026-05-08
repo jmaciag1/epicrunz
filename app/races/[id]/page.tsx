@@ -24,9 +24,9 @@ export default async function RaceDetailPage({
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
-      <div className="bg-white rounded-2xl shadow-sm p-8">
-        <h1 className="text-3xl font-bold text-gray-900">{race.name}</h1>
-        <p className="text-gray-500 mt-2">
+      <div className="bg-gray-900 border border-white/10 rounded-2xl p-8">
+        <h1 className="text-3xl font-bold text-white">{race.name}</h1>
+        <p className="text-gray-400 mt-2">
           {race.city}, {race.state}
         </p>
         <p className="text-orange-500 font-medium mt-1">{date}</p>
@@ -35,7 +35,7 @@ export default async function RaceDetailPage({
             {race.distances.map(d => (
               <span
                 key={d}
-                className="bg-orange-50 text-orange-700 px-3 py-1 rounded-full font-medium text-sm"
+                className="bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full font-medium text-sm border border-orange-500/20"
               >
                 {d}
               </span>
@@ -46,7 +46,7 @@ export default async function RaceDetailPage({
           href={race.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-block bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 font-medium"
+          className="mt-8 inline-block bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 font-medium transition-colors"
         >
           Register on RunSignUp →
         </a>
