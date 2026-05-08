@@ -34,6 +34,9 @@ export default function Nav() {
         <Link href="/races" className="text-gray-400 hover:text-white font-medium transition-colors text-sm">
           Find Races
         </Link>
+        <Link href="/sponsors" className="text-gray-400 hover:text-white font-medium transition-colors text-sm">
+          Race Sponsors
+        </Link>
         {user ? (
           <>
             <Link href="/settings" className="text-gray-400 hover:text-white font-medium transition-colors text-sm">
