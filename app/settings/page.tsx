@@ -45,6 +45,10 @@ function SettingsForm() {
           bio: data.bio ?? '',
           location: data.location ?? '',
         })
+      } else {
+        // Pre-fill display_name from signup metadata
+        const metaName = user.user_metadata?.display_name ?? ''
+        setProfile(p => ({ ...p, display_name: metaName }))
       }
       setLoading(false)
     }
